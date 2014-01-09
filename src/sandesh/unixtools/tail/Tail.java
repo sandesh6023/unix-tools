@@ -1,35 +1,35 @@
-package sandesh.unixtools.head;
+package sandesh.unixtools.tail;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Head {
-    public void printLines(String text,int noOfLines) {
+public class Tail {
+    public void printLinesFromEnd(String text,int noOfLines) {
         String[] lines = text.split("\n");
-        for (int i = 0; i < noOfLines; i++) {
+        int noOfLinesInFile = lines.length;
+
+        for (int i = noOfLinesInFile-noOfLines; i < noOfLinesInFile; i++) {
             System.out.println(lines[i]);
         }
     }
 
     public static void main(String[] args) throws IOException {
-        Head h1 = new Head();
+        Tail t1 = new Tail();
         ReadFromFile read = new ReadFromFile();
         String text = read.readFile(args[0]);
 
         try {
             int noOfLines = Integer.parseInt(args[1]);
-            h1.printLines(text,noOfLines);
+            t1.printLinesFromEnd(text,noOfLines);
             System.exit(0);
         } catch (Exception e) {
-//             System.err.println("please enter correct argument");
         }
         int noOfLines = 10;
-        h1.printLines(text,noOfLines);
+        t1.printLinesFromEnd(text,noOfLines);
     }
 }
-
 class ReadFromFile {
     public String readFile(String fileName) throws IOException {
         String returnValue = "";
