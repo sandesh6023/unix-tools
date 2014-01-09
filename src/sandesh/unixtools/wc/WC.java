@@ -1,7 +1,7 @@
 package sandesh.unixtools.wc;
 
-import java.io.*;
-import java.util.Scanner;
+import sandesh.unixtools.fs.ReadFromFile;
+import java.io.IOException;
 
 class WC{
     public static void main(String[] args) throws IOException {
@@ -15,25 +15,6 @@ class WC{
         int noOfWords = count.wordCount(input);
 
         System.out.println(noOfLines +" "+noOfWords+" "+noOfCharacter+" "+ args[0]);
-    }
-}
-
-class ReadFromFile {
-    public String readFile(String fileName) throws IOException{
-        String returnValue = "";
-        File file = new File(fileName);;
-        String line = "";
-        try {
-            Scanner fileContent = new Scanner(file);
-            while (fileContent.hasNextLine()) {
-                line = fileContent.nextLine();
-                returnValue += line + "\n";
-            }
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
-        return returnValue;
     }
 }
 
