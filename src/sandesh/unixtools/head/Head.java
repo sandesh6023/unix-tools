@@ -17,7 +17,7 @@ public class Head {
         String text = read.readFile(args[0]);
 
         try {
-            int noOfLines = Integer.parseInt(args[1]);
+            int noOfLines = Integer.parseInt(args[1].substring(1));
             h1.printLines(text,noOfLines);
             System.exit(0);
         } catch (Exception e) {

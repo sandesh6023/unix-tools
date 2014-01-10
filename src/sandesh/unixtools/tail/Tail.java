@@ -20,7 +20,7 @@ public class Tail {
         String text = read.readFile(args[0]);
 
         try {
-            int noOfLines = Integer.parseInt(args[1]);
+            int noOfLines = Integer.parseInt(args[1].substring(1));
             t1.printLinesFromEnd(text, noOfLines);
             System.exit(0);
         } catch (Exception e) {
