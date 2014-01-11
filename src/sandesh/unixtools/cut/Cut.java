@@ -6,7 +6,7 @@ import sun.reflect.annotation.ExceptionProxy;
 import java.io.IOException;
 
 class ExtractRows{
-    public void printRequiredRows(String text,int field,String delimiter){
+    public void printRequiredRows(String text, int field,String delimiter){
             String[] rows = text.split("\n");
             int noOfRows = rows.length;
             for (int i = 0; i <noOfRows ; i++) {
@@ -21,14 +21,15 @@ public class Cut {
         String fileContent = read.readFile(args[0]);
         ExtractRows r1 = new ExtractRows();
 
-        int fields = Integer.parseInt(args[1]);
+        InputHandler input = new InputHandler();
+        int field = Integer.parseInt(args[1]);
         try{
             String delimiter = args[2].substring(3,4);
-            r1.printRequiredRows(fileContent,fields,delimiter);
+            r1.printRequiredRows(fileContent,field,delimiter);
             System.exit(0);
         }catch (Exception e){
         }
         String delimiter = " ";
-        r1.printRequiredRows(fileContent,fields,delimiter);
+        r1.printRequiredRows(fileContent,field,delimiter);
     }
 }
