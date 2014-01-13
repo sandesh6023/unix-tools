@@ -2,12 +2,13 @@ package sandesh.unixtools.reduceSpace;
 
 import org.apache.commons.lang.StringUtils;
 import sandesh.unixtools.fs.ReadFromFile;
+
 import java.io.IOException;
 
 public class ReduceSpace {
-    public void trimSpace(String text){
+    public void trimSpace(String text) {
         String formtattedText;
-        formtattedText = text.replaceAll("\\ +"," ");
+        formtattedText = text.replaceAll("\\ +", " ");
         System.out.println(formtattedText);
     }
 

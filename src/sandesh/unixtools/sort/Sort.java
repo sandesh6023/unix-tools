@@ -1,6 +1,7 @@
 package sandesh.unixtools.sort;
 
 import sandesh.unixtools.fs.ReadFromFile;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -9,12 +10,10 @@ public class Sort {
         ReadFromFile read = new ReadFromFile();
         String text = read.readFile(args[0]);
         String[] splitContent = text.split("\n");
-            for (int i = 0; i <splitContent.length ; i++) {
-                System.out.println(splitContent[i]);
-            }
-         Arrays.sort(splitContent);
+
+        Arrays.sort(splitContent);
         System.out.println("\n\n");
-        for (int i = 0; i <splitContent.length ; i++) {
+        for (int i = 0; i < splitContent.length; i++) {
             System.out.println(splitContent[i]);
         }
 
