@@ -8,7 +8,6 @@ public class Tail {
     public void printLinesFromEnd(String text, int RequiredNoOfLines) {
         String[] lines = text.split("\n");
         int noOfLinesInFile = lines.length;
-
         for (int i = noOfLinesInFile - RequiredNoOfLines; i < noOfLinesInFile; i++) {
             System.out.println(lines[i]);
         }

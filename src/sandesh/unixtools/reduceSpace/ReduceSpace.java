@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class ReduceSpace {
     public void trimSpace(String text) {
-        String formtattedText;
-        formtattedText = text.replaceAll("\\ +", " ");
-        System.out.println(formtattedText);
+        String formattedText;
+        formattedText = text.replaceAll("\\ +", " ");
+        System.out.println(formattedText);
     }
 
     public static void main(String[] args) throws IOException {

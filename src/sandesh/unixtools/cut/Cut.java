@@ -1,7 +1,6 @@
 package sandesh.unixtools.cut;
 
 import sandesh.unixtools.fs.ReadFromFile;
-
 import java.io.IOException;
 
 class ExtractRows {
@@ -23,7 +22,7 @@ class MultipleRowsExtractor {
         for (int i = 0; i < noOfRows; i++) {
             requiredRows = requiredRows + "\n";
             for (int j = 0; j < fieldsLength; j++) {
-                requiredRows = requiredRows + rows[i].split(delimiter)[fields[j] - 1]+delimiter;
+                requiredRows = requiredRows + rows[i].split(delimiter)[fields[j] - 1] + delimiter;
             }
         }
         System.out.println(requiredRows);
@@ -35,8 +34,6 @@ public class Cut {
         ReadFromFile read = new ReadFromFile();
         String fileContent = read.readFile(args[0]);
         ExtractRows r1 = new ExtractRows();
-
-        InputHandler input = new InputHandler();
 
         if (args[1].length() > 1) {
             InputHandler Input = new InputHandler();
@@ -51,7 +48,7 @@ public class Cut {
         if (args.length > 2) {
             String delimiter = args[2].substring(3, 4);
             r1.printRequiredRows(fileContent, field, delimiter);
-            System.exit(0);
+            return;
         }
 
         String delimiter = " ";

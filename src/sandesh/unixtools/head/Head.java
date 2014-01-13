@@ -7,7 +7,6 @@ import java.io.IOException;
 public class Head {
     public void printLines(String text, int noOfLines) {
         String[] lines = text.split("\n");
-
         for (int i = 0; i < noOfLines; i++) {
             System.out.println(lines[i]);
         }
