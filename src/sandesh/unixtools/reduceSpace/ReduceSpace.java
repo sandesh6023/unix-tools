@@ -1,6 +1,5 @@
 package sandesh.unixtools.reduceSpace;
 
-import org.apache.commons.lang.StringUtils;
 import sandesh.unixtools.fs.ReadFromFile;
 
 import java.io.IOException;
