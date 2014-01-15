@@ -9,16 +9,17 @@ tail, sort, uniq` and also one extra functionality that is `reduceSpaces`.
 
 ## cut :
 #### Filters and gives the asked columns in given file.
-    * sm_cut.sh filename
+    * sm_cut.sh filename FieldNumber [OPTIONS .... DELIMITER]
 
 ## head:
 #### Head gives the first `n` lines from the given files.
-    * sm_head.sh filename
+    * sm_head.sh filename [-noOfLines]
+    Ex: sm_head.sh a.txt -5
 
 ## tail:
 #### Tail gives the first `n` lines from the given files.
-    * sm_tail.sh filename
-
+    * sm_tail.sh filename [-noOfLines]
+    Ex: sm_tail.sh a.txt -5
 
 ## sort:
 #### Sorts the lines in a file.

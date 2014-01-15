@@ -35,7 +35,6 @@ public class CutMain {
                 options[2] = args[i];
             }
         }
-
         return options;
     }
     static boolean isDelimiter(String arg){
