@@ -22,23 +22,14 @@ tail, sort, uniq` and also one extra functionality that is `reduceSpaces`.
     * sm_uniq.sh Filename
 
 
-
-
-## Uniq
-*sm_uniq filename
- 
-    `Ex: sm_uniq one.txt`
-It will print only unique lines of file.
-
-
-## Cut
+## cut
 *sa_cut filename fieldnumber delimiter
 
     `Ex = sm_cut one.txt -f1 -d, `
 It will print 1st field of file.    
 
 
-## Sort
+## sort
 *sm_sort filename
 
     `Ex:sm_sort one.txt`
@@ -52,7 +43,7 @@ It will print file data in sorted order.
 It will print file data in sorted reverse order. 
 
 
-## ReduceSpace
+## reduceSpace
 *sm_reduceSpace filename
 
     `sm_reduceSpace one.txt`
