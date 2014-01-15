@@ -1,0 +1,1 @@
+java -cp out/artifacts/UnixTools_jar/UnixTools.jar sandesh.unixtools.cli.WcMain $1
