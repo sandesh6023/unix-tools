@@ -1,5 +1,6 @@
 package sandesh.unixtools.cli;
 
+import sandesh.unixtools.fs.ReadFromFile;
 import sandesh.unixtools.lib.Cut;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.io.IOException;
 public class CutMain {
     public static void main(String[] args) throws IOException {
         CutMain obj = new CutMain();
-        MyFile myfile = new MyFile();
+        ReadFromFile myfile = new ReadFromFile();
         Cut cut = new Cut();
 
         String properArgs[] = obj.getProperArgs(args);

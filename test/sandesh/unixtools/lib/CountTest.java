@@ -12,13 +12,12 @@ public class CountTest {
         int expected = 5;
         assertEquals(actualResult, expected);
     }
-
     @Test
     public void testWordCount() throws Exception {
         WC count = new WC();
-        String text = "a eee\nb yuu\nc\nf\ng\n";
-        int actualResult = count.charCount(text);
-        int expected = 18;
+        String text2 = "hi how are you";
+        int actualResult = count.wordCount(text2);
+        int expected = 4;
         assertEquals(expected,actualResult);
     }
 
@@ -26,7 +25,7 @@ public class CountTest {
     public void testCharCount() throws Exception {
         WC count = new WC();
         String text = "a ljf\nb lfjl\nc\nf\ng\n";
-        int actualResult = count.wordCount(text);
+        int actualResult = count.charCount(text);
         int expected = 7;
         assertEquals(expected, actualResult);
     }
