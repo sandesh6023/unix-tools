@@ -14,7 +14,7 @@ public class ReduceMain {
         String fileText = read.readFile(args[0]);
         ReduceSpace trim = new ReduceSpace();
         String content = trim.trimSpace(fileText);
-        try{
+        try {
             File file = new File(args[0]);
             FileWriter fw = new FileWriter(args[0]);
             BufferedWriter bw = new BufferedWriter(fw);

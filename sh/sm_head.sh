@@ -1,1 +1,1 @@
-java -cp D:/projects/unix-tools/out/artifacts/UnixTools_jar/UnixTools.jar sandesh.unixtools.cli.HeadMain $1 $2
+java -cp $SH_PATH/UnixTools.jar sandesh.unixtools.cli.HeadMain $1 $2

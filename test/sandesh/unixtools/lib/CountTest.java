@@ -26,7 +26,7 @@ public class CountTest {
         WC count = new WC();
         String text = "a ljf\nb lfjl\nc\nf\ng\n";
         int actualResult = count.charCount(text);
-        int expected = 7;
+        int expected = 19;
         assertEquals(expected, actualResult);
     }
 }
