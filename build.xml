@@ -5,7 +5,7 @@
         <delete dir="unix-tools/lib"></delete>
         <delete dir="unix-tools/bin"></delete>
     </target>
-    <target name="compile">
+    <target name="compile" depends="clean">
         <mkdir dir="classes"></mkdir>
         <javac srcdir="src" destdir="classes" includeantruntime="false"></javac>
     </target>
