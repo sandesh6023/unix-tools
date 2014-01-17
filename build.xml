@@ -1,10 +1,35 @@
-<project name = "unixtools">
-    <target name = "clean">
-        <delete dir="classes"/>
+<project name="unix-tools">
+    <target name="clean">
+        <delete dir="classes"></delete>
+        <delete dir="unix-tools"></delete>
+        <delete dir="unix-tools/lib"></delete>
+        <delete dir="unix-tools/bin"></delete>
     </target>
-
-    <target name = "compile">
-        <mkdir dir="classes"/>
-        <javac srcdir="src" destdir="classes" includeantruntime="false"/>
+    <target name="compile">
+        <mkdir dir="classes"></mkdir>
+        <javac srcdir="src" destdir="classes" includeantruntime="false"></javac>
+    </target>
+    <target name="createDirectory" depends="compile">
+        <mkdir dir="unix-tools"></mkdir>
+        <mkdir dir="unix-tools/lib"></mkdir>
+        <mkdir dir="unix-tools/bin"></mkdir>
+    </target>
+    <target name="createJarFile" depends="createDirectory">
+        <jar destfile="unix-tools/lib/unix-tools.jar" basedir="classes"></jar>
+    </target>
+    <target name="copyShellFiles" depends="createJarFile">
+        <copy file="sh/sm_cut.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_head.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_reduceSpace.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_sort.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_tail.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_uniq.sh" todir="unix-tools/bin"></copy>
+        <copy file="sh/sm_wc.sh" todir="unix-tools/bin"></copy>
+    </target>
+    <target name = "createZip" depends="createJarFile">
+        <zip zipfile = "unix-tools.zip" basedir = "unix-tools"></zip>
+    </target>
+    <target name="copyReadMe" depends="copyShellFiles">
+        <copy file="README.md" todir="unix-tools"></copy>
     </target>
 </project>
