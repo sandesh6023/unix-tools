@@ -50,7 +50,7 @@
         <copy todir="build/dist/bin">
             <fileset dir="sh"/>
         </copy>
-        <copy file="README.md" todir="unix-tools/dist">
+        <copy file="README.md" todir="build/dist">
         </copy>
     </target>
 
@@ -58,5 +58,6 @@
         <zip zipFile="build/dist/unix-tools.zip" basedir="build/dist"></zip>
         <delete dir="build/dist/bin"></delete>
         <delete dir="build/dist/lib"></delete>
+        <delete file="build/dist/README.md"></delete>
     </target>
 </project>
