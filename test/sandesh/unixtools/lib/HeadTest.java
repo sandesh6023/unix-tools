@@ -24,4 +24,3 @@ public class HeadTest {
         assertEquals(expected,actualLines);
     }
 }
-

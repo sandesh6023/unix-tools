@@ -1,38 +1,62 @@
 <project name="unix-tools">
     <target name="clean">
-        <delete dir="classes"></delete>
-        <delete dir="unix-tools"></delete>
-        <delete dir="unix-tools/lib"></delete>
-        <delete dir="unix-tools/bin"></delete>
+        <delete dir="build"></delete>
     </target>
-    <target name="compile" depends="clean">
-        <mkdir dir="classes"></mkdir>
-        <javac srcdir="src" destdir="classes" includeantruntime="false"></javac>
+    <target name="createDir">
+        <mkdir dir="build"></mkdir>
+        <mkdir dir="build/lib"></mkdir>
+        <mkdir dir="build/External-Libraries"></mkdir>
     </target>
-    <target name="createDirectory" depends="compile">
-        <mkdir dir="unix-tools"></mkdir>
-        <mkdir dir="unix-tools/lib"></mkdir>
-        <mkdir dir="unix-tools/bin"></mkdir>
+    <target name="compile" depends="createDir">
+        <mkdir dir="build/classes"></mkdir>
+        <javac srcdir="src" destdir="build/classes" includeantruntime="false"></javac>
     </target>
-    <target name="createJarFile" depends="createDirectory">
-        <jar destfile="unix-tools/lib/unix-tools.jar" basedir="classes"></jar>
-    </target>
-    <target name="copyShellFiles" depends="createJarFile">
-        <copy file="sh/sm_cut.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_head.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_reduceSpace.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_sort.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_tail.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_uniq.sh" todir="unix-tools/bin"></copy>
-        <copy file="sh/sm_wc.sh" todir="unix-tools/bin"></copy>
-    </target>
-    <target name = "createZip" depends="createJarFile">
-        <zip zipfile = "unix-tools.zip" basedir = "unix-tools"></zip>
-    </target>
-    <target name = "checkTestCases">
 
+    <target name="createClassesJar" depends="compile">
+        <jar destfile="build/lib/unix-tools.jar" basedir="build/classes"></jar>
     </target>
-    <target name="copyReadMe" depends="copyShellFiles">
-        <copy file="README.md" todir="unix-tools"></copy>
+    <target name="createJunitJar" depends="createClassesJar">
+            <copy file="dependencies/junit-4.10.jar" todir="build/External-Libraries"></copy>
+    </target>
+
+    <target name="compileTest" depends="createJunitJar">
+        <mkdir dir="build/TestClasses"></mkdir>
+        <javac srcdir="test" destdir="build/TestClasses"
+               classpath="build/lib/unix-tools.jar;build/External-Libraries/junit-4.10.jar"
+               includeantruntime="false"></javac>
+    </target>
+
+    <target name="runTest" depends="compileTest">
+        <java classname="org.junit.runner.JUnitCore"
+              classpath="build/External-Libraries/junit-4.10.jar;build/classes;build/TestClasses">
+            <arg value="sandesh.unixtools.lib.HeadTest"></arg>
+            <arg value="sandesh.unixtools.lib.CountTest"></arg>
+            <arg value="sandesh.unixtools.lib.CutTest"></arg>
+            <arg value="sandesh.unixtools.lib.ReduceSpaceTest"></arg>
+            <arg value="sandesh.unixtools.lib.SortTest"></arg>
+            <arg value="sandesh.unixtools.lib.TailTest"></arg>
+            <arg value="sandesh.unixtools.lib.UniqTest"></arg>
+        </java>
+    </target>
+
+    <target name="createDist" depends="runTest">
+        <mkdir dir="build/dist"></mkdir>
+        <mkdir dir="build/dist/bin"></mkdir>
+        <mkdir dir="build/dist/lib"></mkdir>
+
+        <copy todir="build/dist/lib">
+            <fileset dir="build/lib"/>
+        </copy>
+        <copy todir="build/dist/bin">
+            <fileset dir="sh"/>
+        </copy>
+        <copy file="README.md" todir="unix-tools/dist">
+        </copy>
+    </target>
+
+    <target name="createZip" depends="createDist">
+        <zip zipFile="build/dist/unix-tools.zip" basedir="build/dist"></zip>
+        <delete dir="build/dist/bin"></delete>
+        <delete dir="build/dist/lib"></delete>
     </target>
 </project>

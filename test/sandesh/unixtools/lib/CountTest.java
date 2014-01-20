@@ -1,5 +1,8 @@
 package sandesh.unixtools.lib;
+
 import org.junit.Test;
+import sandesh.unixtools.lib.WC;
+
 import static junit.framework.Assert.assertEquals;
 
 
