@@ -1,1 +1,1 @@
-java -cp $SH_PATH/UnixTools.jar sandesh.unixtools.cli.TailMain $1 $2
+java -cp $SH_PATH/lib/unix-tools.jar sandesh.unixtools.cli.TailMain $1 $2
