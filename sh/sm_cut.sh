@@ -1,1 +1,1 @@
-java -cp $SH_PATH/UnixTools.jar sandesh.unixtools.cli.CutMain $1 $2 $3
+java -cp $SH_PATH/unix-tools.jar sandesh.unixtools.cli.CutMain $1 $2 $3
