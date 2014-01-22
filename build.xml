@@ -27,16 +27,19 @@
     </target>
 
     <target name="runTest" depends="compileTest">
-        <java classname="org.junit.runner.JUnitCore"
-              classpath="build/External-Libraries/junit-4.10.jar;build/classes;build/TestClasses">
-            <arg value="sandesh.unixtools.lib.HeadTest"></arg>
-            <arg value="sandesh.unixtools.lib.CountTest"></arg>
-            <arg value="sandesh.unixtools.lib.CutTest"></arg>
-            <arg value="sandesh.unixtools.lib.ReduceSpaceTest"></arg>
-            <arg value="sandesh.unixtools.lib.SortTest"></arg>
-            <arg value="sandesh.unixtools.lib.TailTest"></arg>
-            <arg value="sandesh.unixtools.lib.UniqTest"></arg>
-        </java>
+        <junit>
+            <classpath>
+                <pathelement location="build/classes"/>
+                <pathelement location="build/TestClasses"/>
+                <pathelement location="dependencies/junit-4.10.jar"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="build/TestClasses">
+                    <include name="**/*Test*"/>
+                </fileset>
+            </batchtest>
+            <formatter type="brief" usefile="false"/>
+        </junit>
     </target>
 
     <target name="createDist" depends="runTest">
