@@ -17,6 +17,21 @@ public class TailMain {
             System.out.println(tail.getRequiredLinesFromEnd(text, RequiredNoOfLines));
             return;
         }
-        System.out.println(tail.getDefaultNoOfLines(text));
+
+        String EnvironmentPath = System.getenv("SH_PATH1");
+        String pathToConfig = EnvironmentPath + "../config/config.txt";
+        String configInfo = read.readFile(pathToConfig);
+
+        if (configInfo.length() == 0)
+            System.out.println(tail.getRequiredLinesFromEnd(text, 10));
+        else {
+            String[] noOfLines = configInfo.split("=");
+            try{
+                int lines = Integer.parseInt(noOfLines[1].trim());
+                System.out.println(tail.getRequiredLinesFromEnd(text, lines));
+            }catch(Exception e){
+                System.out.println(tail.getRequiredLinesFromEnd(text, 10));
+            }
+        }
     }
 }

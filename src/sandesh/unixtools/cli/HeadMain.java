@@ -16,6 +16,21 @@ public class HeadMain {
             System.out.println(head.getRequiredLines(text, noOfLines));
             return;
         }
-        System.out.println(head.getDefaultNoOfLines(text));
+
+        String EnvironmentPath = System.getenv("SH_PATH1");
+        String pathToConfig = EnvironmentPath + "../config/config.txt";
+        String configInfo = read.readFile(pathToConfig);
+
+        if (configInfo.length() == 0)
+            System.out.println(head.getRequiredLines(text, 10));
+        else {
+            String[] noOfLines = configInfo.split("=");
+            try{
+                int lines = Integer.parseInt(noOfLines[1].trim());
+                System.out.println(head.getRequiredLines(text, lines));
+            }catch(Exception e){
+                System.out.println(head.getRequiredLines(text, 10));
+            }
+        }
     }
 }

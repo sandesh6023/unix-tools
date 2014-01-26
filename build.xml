@@ -1,6 +1,7 @@
 <project name="unix-tools">
     <target name="clean">
         <delete dir="build"></delete>
+        <delete dir="dist"></delete>
     </target>
     <target name="createDir">
         <mkdir dir="build"></mkdir>
@@ -16,7 +17,7 @@
         <jar destfile="build/lib/unix-tools.jar" basedir="build/classes"></jar>
     </target>
     <target name="createJunitJar" depends="createClassesJar">
-            <copy file="dependencies/junit-4.10.jar" todir="build/External-Libraries"></copy>
+        <copy file="dependencies/junit-4.10.jar" todir="build/External-Libraries"></copy>
     </target>
 
     <target name="compileTest" depends="createJunitJar">
@@ -46,7 +47,7 @@
         <mkdir dir="build/dist"></mkdir>
         <mkdir dir="build/dist/bin"></mkdir>
         <mkdir dir="build/dist/lib"></mkdir>
-
+        <mkdir dir="build/dist/config/"></mkdir>
         <copy todir="build/dist/lib">
             <fileset dir="build/lib"/>
         </copy>
@@ -55,10 +56,12 @@
         </copy>
         <copy file="README.md" todir="build/dist">
         </copy>
+        <copy file="dependencies/config/config.txt" todir="build/dist/config/">
+        </copy>
     </target>
 
     <target name="createZip" depends="createDist">
-        <zip zipFile="build/dist/unix-tools.zip" basedir="build/dist"></zip>
+        <zip zipFile="dist/unix-tools.zip" basedir="build/dist"></zip>
         <delete dir="build/dist/bin"></delete>
         <delete dir="build/dist/lib"></delete>
         <delete file="build/dist/README.md"></delete>
